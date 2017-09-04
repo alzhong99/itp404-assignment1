@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2 HW: Ajax and the Reddit API</title>
+</head>
+<body>
+
+  <ul id='potayto'></ul>
+
+  <script src='jquery-3.2.1.js'></script>
+  <script>
+    function fetchPostsForSubreddit(subreddit, callback) {
+      $.getJSON('https://www.reddit.com/r/' + subreddit + '.json', callback);
+    }
+    fetchPostsForSubreddit('potato', function(results) {
+      results.data.children.forEach(function(post) {
+        $('#potayto').append('<li>' + post.data.title + '</li>');
+      });
+    });
+  </script>
+</body>
+</html>
